@@ -8,10 +8,11 @@ C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursPr
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\bin\Debug\Renci.SshNet.dll
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\bin\Debug\MySql.Data.xml
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.csprojAssemblyReference.cache
-C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.Form1.resources
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.Properties.Resources.resources
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.csproj.GenerateResource.cache
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.csproj.CoreCompileInputs.cache
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.csproj.CopyComplete
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.exe
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.pdb
+C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.EntryForm.resources
+C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.Form2.resources

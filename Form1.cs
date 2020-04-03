@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace KursProj
 {
-    public partial class Form1 : Form
+    public partial class EntryForm : Form
     {
-        public Form1()
+        public EntryForm()
         {
             InitializeComponent();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            MySQLConnection.Close();
             Application.Exit();
         }
 
@@ -28,6 +29,9 @@ namespace KursProj
             try
             {
                 MySQLConnection.Connect(LoginTextBox.Text, PasswordTextBox.Text, DBNameTextBox.Text);
+                Form2 form2 = new Form2(this);
+                form2.Show();
+                Hide();
             }
             catch (MySqlException MSQLEx)
             {
