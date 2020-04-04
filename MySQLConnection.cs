@@ -67,10 +67,10 @@ namespace KursProj
             string tableName = null;
             for (int i = 0; i < words.Length; i++)
             {
-                if (words[i].ToLower().Equals("from"))
+                if (words[i].ToLower().Equals("from") | words[i].ToLower().Equals("describe"))
                     tableName = words[i + 1];
             }
-            if (tableName.Equals(null))
+            if (tableName == null)
                 throw new ArgumentNullException("Не найдено название таблицы в запросе");
             return tableName;
         }
