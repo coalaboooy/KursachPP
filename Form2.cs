@@ -11,24 +11,25 @@ using MySql.Data.MySqlClient;
 
 namespace KursProj
 {
-    public partial class Form2 : Form
+    public partial class DataShowForm : Form
     {
-        EntryForm ef = null;
-        public Form2()
+        EntryForm EF = null; 
+        QueryForm QF = null;
+        public DataShowForm()
         {
             InitializeComponent();
         }
 
-        public Form2(EntryForm f)
+        public DataShowForm(EntryForm f)
         {
             InitializeComponent();
             //DataTable.ReadOnly = false; Для редактирования?
-            ef = f;
+            EF = f;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ef.Visible = true;
+            EF.Visible = true;
         }
 
         private void ExecuteQueryButton_Click(object sender, EventArgs e)
@@ -36,8 +37,8 @@ namespace KursProj
             try
             {
                 //Команды будут передаваться из новой формы, открывающейся по клику CreateQueryButton
-                DataTable.DataSource = MySQLConnection.GetDataSet("select * from employee"); 
-                DataTable.DataMember = MySQLConnection.GetTableName("select * from employee");
+                DataTable.DataSource = MySQLConnection.GetDataSet("describe location"); 
+                DataTable.DataMember = MySQLConnection.GetTableName("describe location");//QF.GetCommand()
             }
             catch (Exception ex)
             {
@@ -55,9 +56,15 @@ namespace KursProj
             }
         }
 
-        private void CreateQueryButton_Click(object sender, EventArgs e)
+        public void CreateQueryButton_Click(object sender, EventArgs e)
         {
-            //Новая форма для создания запросов
+            QF = new QueryForm(this);
+            QF.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //получить типы колонок с помощью GetSchema
         }
     }
 }

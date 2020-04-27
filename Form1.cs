@@ -29,8 +29,8 @@ namespace KursProj
             try
             {
                 MySQLConnection.Connect(LoginTextBox.Text, PasswordTextBox.Text, DBNameTextBox.Text);
-                Form2 form2 = new Form2(this);
-                form2.Show();
+                DataShowForm DSF = new DataShowForm(this);
+                DSF.Show();
                 Hide();
             }
             catch (MySqlException MSQLEx)

@@ -66,13 +66,46 @@ namespace KursProj
             string[] words = command.Split(' ');
             string tableName = null;
             for (int i = 0; i < words.Length; i++)
-            {
+            { //добавитьь больше случаев (delete, insert, и т.д.)
                 if (words[i].ToLower().Equals("from") | words[i].ToLower().Equals("describe"))
                     tableName = words[i + 1];
             }
             if (tableName == null)
                 throw new ArgumentNullException("Не найдено название таблицы в запросе");
             return tableName;
+        }
+
+        public static DataTable GetTables ()
+        {
+            DataTable dt = conn.GetSchema("Tables").Copy();
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                if (dt.Columns[i].ColumnName != "TABLE_NAME")
+                {
+                    dt.Columns.Remove(dt.Columns[i]);
+                    i--;
+                }
+            }
+            return dt; //возвращает DataTable со списком таблиц в БД
+        }
+        public static DataTable GetColumnsInTable (string tableName)
+        {
+            //для колонок:
+            //0, 1 - неважно
+            //2 - имя таблицы
+            //3 - имя колонки
+            string[] rv = new string[4];
+            rv[2] = tableName;
+            DataTable dt = conn.GetSchema("Columns", rv).Copy();
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                if (dt.Columns[i].ColumnName != "COLUMN_NAME")
+                {
+                    dt.Columns.Remove(dt.Columns[i]);
+                    i--;
+                }
+            }
+            return dt;
         }
     }
 }
