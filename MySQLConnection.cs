@@ -30,6 +30,11 @@ namespace KursProj
                 conn.Close();
         }
 
+        public static MySqlConnection GetConnection()
+        {
+            return conn;
+        }
+
         /*public static StringBuilder TextCommand () //Возможно, не стоит использовать. Вместо этого попробовать отображать информацию в таблице (нужна новая форма)
         {
             string command = "SELECT * FROM employee";
@@ -86,7 +91,7 @@ namespace KursProj
                     i--;
                 }
             }
-            return dt; //возвращает DataTable со списком таблиц в БД
+            return dt;
         }
         public static DataTable GetColumnsInTable (string tableName)
         {
@@ -99,7 +104,8 @@ namespace KursProj
             DataTable dt = conn.GetSchema("Columns", rv).Copy();
             for (int i = 0; i < dt.Columns.Count; i++)
             {
-                if (dt.Columns[i].ColumnName != "COLUMN_NAME")
+                if (dt.Columns[i].ColumnName == "COLUMN_NAME" | dt.Columns[i].ColumnName == "DATA_TYPE" | dt.Columns[i].ColumnName == "EXTRA") { }
+                else
                 {
                     dt.Columns.Remove(dt.Columns[i]);
                     i--;

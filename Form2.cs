@@ -36,9 +36,15 @@ namespace KursProj
         {
             try
             {
-                //Команды будут передаваться из новой формы, открывающейся по клику CreateQueryButton
-                DataTable.DataSource = MySQLConnection.GetDataSet("describe location"); 
-                DataTable.DataMember = MySQLConnection.GetTableName("describe location");//QF.GetCommand()
+                if (QF.TypeOfCommand == 0 & QF.TypeOfCommand >= 0)
+                {
+                    DataTable.DataSource = MySQLConnection.GetDataSet(QF.GetQueryCommand());
+                    DataTable.DataMember = MySQLConnection.GetTableName(QF.GetQueryCommand());
+                }
+                else if (QF.TypeOfCommand >= 0)
+                {
+                    MessageBox.Show("Транзакция выполнена успешно, изменено " + QF.GetNonQueryCommand().ExecuteNonQuery().ToString() + " рядов");
+                }
             }
             catch (Exception ex)
             {
@@ -65,6 +71,12 @@ namespace KursProj
         private void button1_Click(object sender, EventArgs e)
         {
             //получить типы колонок с помощью GetSchema
+            DataTable.DataSource = MySQLConnection.GetColumnsInTable("job");
+            //возможные типы:
+            //varchar, small/medium/bigtext - string
+            //int - int
+            //float - float
+            //date - почитать
         }
     }
 }

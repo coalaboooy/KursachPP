@@ -31,24 +31,27 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.QueryCreateWindow = new System.Windows.Forms.TabControl();
             this.DataViewTab = new System.Windows.Forms.TabPage();
+            this.ConditionSwitch = new System.Windows.Forms.CheckBox();
+            this.ConditionPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Conditions = new System.Windows.Forms.ComboBox();
+            this.ConditionFields = new System.Windows.Forms.ComboBox();
+            this.CondLabel2 = new System.Windows.Forms.Label();
+            this.CondLabel1 = new System.Windows.Forms.Label();
+            this.ValueCheckTextBox = new System.Windows.Forms.TextBox();
+            this.SelectLabel = new System.Windows.Forms.Label();
             this.ViewFields = new System.Windows.Forms.CheckedListBox();
             this.DataAddTab = new System.Windows.Forms.TabPage();
+            this.ValuesTextBox = new System.Windows.Forms.TextBox();
+            this.FormatLabel = new System.Windows.Forms.Label();
             this.DataChangeTab = new System.Windows.Forms.TabPage();
             this.DataDeleteTab = new System.Windows.Forms.TabPage();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.TableListLabel = new System.Windows.Forms.Label();
-            this.SelectLabel = new System.Windows.Forms.Label();
-            this.ConditionPanel = new System.Windows.Forms.Panel();
-            this.ConditionSwitch = new System.Windows.Forms.CheckBox();
-            this.ValueCheckTextBox = new System.Windows.Forms.TextBox();
-            this.CondLabel1 = new System.Windows.Forms.Label();
-            this.CondLabel2 = new System.Windows.Forms.Label();
-            this.ConditionFields = new System.Windows.Forms.ComboBox();
-            this.Conditions = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.QueryCreateWindow.SuspendLayout();
             this.DataViewTab.SuspendLayout();
             this.ConditionPanel.SuspendLayout();
+            this.DataAddTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -88,6 +91,103 @@
             this.DataViewTab.ToolTipText = "Здесь можно просмотреть сущности из таблиц";
             this.DataViewTab.UseVisualStyleBackColor = true;
             // 
+            // ConditionSwitch
+            // 
+            this.ConditionSwitch.AutoSize = true;
+            this.ConditionSwitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConditionSwitch.Location = new System.Drawing.Point(187, 18);
+            this.ConditionSwitch.Name = "ConditionSwitch";
+            this.ConditionSwitch.Size = new System.Drawing.Size(415, 24);
+            this.ConditionSwitch.TabIndex = 3;
+            this.ConditionSwitch.Text = "Отметьте, чтобы задать условие для поиска";
+            this.ConditionSwitch.UseVisualStyleBackColor = true;
+            this.ConditionSwitch.CheckedChanged += new System.EventHandler(this.ConditionSwitch_CheckedChanged);
+            // 
+            // ConditionPanel
+            // 
+            this.ConditionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConditionPanel.Controls.Add(this.label1);
+            this.ConditionPanel.Controls.Add(this.Conditions);
+            this.ConditionPanel.Controls.Add(this.ConditionFields);
+            this.ConditionPanel.Controls.Add(this.CondLabel2);
+            this.ConditionPanel.Controls.Add(this.CondLabel1);
+            this.ConditionPanel.Controls.Add(this.ValueCheckTextBox);
+            this.ConditionPanel.Enabled = false;
+            this.ConditionPanel.Location = new System.Drawing.Point(187, 57);
+            this.ConditionPanel.Name = "ConditionPanel";
+            this.ConditionPanel.Size = new System.Drawing.Size(433, 279);
+            this.ConditionPanel.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(190, 220);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(242, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Введите значение для проверки";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Conditions
+            // 
+            this.Conditions.FormattingEnabled = true;
+            this.Conditions.Items.AddRange(new object[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.Conditions.Location = new System.Drawing.Point(234, 73);
+            this.Conditions.Name = "Conditions";
+            this.Conditions.Size = new System.Drawing.Size(180, 24);
+            this.Conditions.TabIndex = 6;
+            // 
+            // ConditionFields
+            // 
+            this.ConditionFields.FormattingEnabled = true;
+            this.ConditionFields.Location = new System.Drawing.Point(11, 73);
+            this.ConditionFields.Name = "ConditionFields";
+            this.ConditionFields.Size = new System.Drawing.Size(180, 24);
+            this.ConditionFields.TabIndex = 5;
+            // 
+            // CondLabel2
+            // 
+            this.CondLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CondLabel2.Location = new System.Drawing.Point(234, -1);
+            this.CondLabel2.Name = "CondLabel2";
+            this.CondLabel2.Size = new System.Drawing.Size(180, 75);
+            this.CondLabel2.TabIndex = 4;
+            this.CondLabel2.Text = "Выберите условие для проверки";
+            this.CondLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CondLabel1
+            // 
+            this.CondLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CondLabel1.Location = new System.Drawing.Point(11, 0);
+            this.CondLabel1.Name = "CondLabel1";
+            this.CondLabel1.Size = new System.Drawing.Size(180, 74);
+            this.CondLabel1.TabIndex = 3;
+            this.CondLabel1.Text = "Выберите поле для задания условия";
+            this.CondLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ValueCheckTextBox
+            // 
+            this.ValueCheckTextBox.Location = new System.Drawing.Point(190, 242);
+            this.ValueCheckTextBox.Name = "ValueCheckTextBox";
+            this.ValueCheckTextBox.Size = new System.Drawing.Size(238, 22);
+            this.ValueCheckTextBox.TabIndex = 2;
+            // 
+            // SelectLabel
+            // 
+            this.SelectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SelectLabel.Location = new System.Drawing.Point(21, 7);
+            this.SelectLabel.Name = "SelectLabel";
+            this.SelectLabel.Size = new System.Drawing.Size(136, 67);
+            this.SelectLabel.TabIndex = 1;
+            this.SelectLabel.Text = "Выберите поля для вывода";
+            this.SelectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ViewFields
             // 
             this.ViewFields.FormattingEnabled = true;
@@ -98,21 +198,41 @@
             // 
             // DataAddTab
             // 
+            this.DataAddTab.Controls.Add(this.ValuesTextBox);
+            this.DataAddTab.Controls.Add(this.FormatLabel);
             this.DataAddTab.Location = new System.Drawing.Point(4, 25);
             this.DataAddTab.Name = "DataAddTab";
             this.DataAddTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DataAddTab.Size = new System.Drawing.Size(641, 348);
+            this.DataAddTab.Size = new System.Drawing.Size(644, 348);
             this.DataAddTab.TabIndex = 1;
             this.DataAddTab.Text = "Добавление данных";
             this.DataAddTab.ToolTipText = "Здесь можно добавить сущности в таблицы";
             this.DataAddTab.UseVisualStyleBackColor = true;
+            // 
+            // ValuesTextBox
+            // 
+            this.ValuesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ValuesTextBox.Location = new System.Drawing.Point(6, 139);
+            this.ValuesTextBox.Multiline = true;
+            this.ValuesTextBox.Name = "ValuesTextBox";
+            this.ValuesTextBox.Size = new System.Drawing.Size(632, 203);
+            this.ValuesTextBox.TabIndex = 1;
+            // 
+            // FormatLabel
+            // 
+            this.FormatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.FormatLabel.Location = new System.Drawing.Point(7, 7);
+            this.FormatLabel.Name = "FormatLabel";
+            this.FormatLabel.Size = new System.Drawing.Size(631, 129);
+            this.FormatLabel.TabIndex = 0;
+            this.FormatLabel.Text = "Введите добавляемые данные ниже в данном формате:\r\n";
             // 
             // DataChangeTab
             // 
             this.DataChangeTab.Location = new System.Drawing.Point(4, 25);
             this.DataChangeTab.Name = "DataChangeTab";
             this.DataChangeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DataChangeTab.Size = new System.Drawing.Size(641, 348);
+            this.DataChangeTab.Size = new System.Drawing.Size(644, 348);
             this.DataChangeTab.TabIndex = 2;
             this.DataChangeTab.Text = "Изменение данных";
             this.DataChangeTab.ToolTipText = "Здесь можно изменить сущности в таблицах";
@@ -123,7 +243,7 @@
             this.DataDeleteTab.Location = new System.Drawing.Point(4, 25);
             this.DataDeleteTab.Name = "DataDeleteTab";
             this.DataDeleteTab.Padding = new System.Windows.Forms.Padding(3);
-            this.DataDeleteTab.Size = new System.Drawing.Size(641, 348);
+            this.DataDeleteTab.Size = new System.Drawing.Size(644, 348);
             this.DataDeleteTab.TabIndex = 3;
             this.DataDeleteTab.Text = "Удаление данных";
             this.DataDeleteTab.ToolTipText = "Здесь можно удалить сущности из таблиц";
@@ -148,103 +268,6 @@
             this.TableListLabel.Text = "Выберите таблицу для работы";
             this.TableListLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // SelectLabel
-            // 
-            this.SelectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectLabel.Location = new System.Drawing.Point(21, 7);
-            this.SelectLabel.Name = "SelectLabel";
-            this.SelectLabel.Size = new System.Drawing.Size(136, 67);
-            this.SelectLabel.TabIndex = 1;
-            this.SelectLabel.Text = "Выберите поля для вывода";
-            this.SelectLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ConditionPanel
-            // 
-            this.ConditionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConditionPanel.Controls.Add(this.label1);
-            this.ConditionPanel.Controls.Add(this.Conditions);
-            this.ConditionPanel.Controls.Add(this.ConditionFields);
-            this.ConditionPanel.Controls.Add(this.CondLabel2);
-            this.ConditionPanel.Controls.Add(this.CondLabel1);
-            this.ConditionPanel.Controls.Add(this.ValueCheckTextBox);
-            this.ConditionPanel.Enabled = false;
-            this.ConditionPanel.Location = new System.Drawing.Point(187, 57);
-            this.ConditionPanel.Name = "ConditionPanel";
-            this.ConditionPanel.Size = new System.Drawing.Size(433, 279);
-            this.ConditionPanel.TabIndex = 2;
-            // 
-            // ConditionSwitch
-            // 
-            this.ConditionSwitch.AutoSize = true;
-            this.ConditionSwitch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ConditionSwitch.Location = new System.Drawing.Point(187, 18);
-            this.ConditionSwitch.Name = "ConditionSwitch";
-            this.ConditionSwitch.Size = new System.Drawing.Size(415, 24);
-            this.ConditionSwitch.TabIndex = 3;
-            this.ConditionSwitch.Text = "Отметьте, чтобы задать условие для поиска";
-            this.ConditionSwitch.UseVisualStyleBackColor = true;
-            this.ConditionSwitch.CheckedChanged += new System.EventHandler(this.ConditionSwitch_CheckedChanged);
-            // 
-            // ValueCheckTextBox
-            // 
-            this.ValueCheckTextBox.Location = new System.Drawing.Point(190, 242);
-            this.ValueCheckTextBox.Name = "ValueCheckTextBox";
-            this.ValueCheckTextBox.Size = new System.Drawing.Size(238, 22);
-            this.ValueCheckTextBox.TabIndex = 2;
-            // 
-            // CondLabel1
-            // 
-            this.CondLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CondLabel1.Location = new System.Drawing.Point(11, 0);
-            this.CondLabel1.Name = "CondLabel1";
-            this.CondLabel1.Size = new System.Drawing.Size(180, 74);
-            this.CondLabel1.TabIndex = 3;
-            this.CondLabel1.Text = "Выберите поле для задания условия";
-            this.CondLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // CondLabel2
-            // 
-            this.CondLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CondLabel2.Location = new System.Drawing.Point(234, -1);
-            this.CondLabel2.Name = "CondLabel2";
-            this.CondLabel2.Size = new System.Drawing.Size(180, 75);
-            this.CondLabel2.TabIndex = 4;
-            this.CondLabel2.Text = "Выберите условие для проверки";
-            this.CondLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ConditionFields
-            // 
-            this.ConditionFields.FormattingEnabled = true;
-            this.ConditionFields.Location = new System.Drawing.Point(11, 73);
-            this.ConditionFields.Name = "ConditionFields";
-            this.ConditionFields.Size = new System.Drawing.Size(180, 24);
-            this.ConditionFields.TabIndex = 5;
-            // 
-            // Conditions
-            // 
-            this.Conditions.FormattingEnabled = true;
-            this.Conditions.Items.AddRange(new object[] {
-            "= (равно)",
-            "!= (не равно)",
-            "> (больше)",
-            ">= (больше или равно)",
-            "< (меньше)",
-            "<= (меньше или равно)"});
-            this.Conditions.Location = new System.Drawing.Point(234, 73);
-            this.Conditions.Name = "Conditions";
-            this.Conditions.Size = new System.Drawing.Size(180, 24);
-            this.Conditions.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(190, 220);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 19);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Введите значение для проверки";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // QueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -262,6 +285,8 @@
             this.DataViewTab.PerformLayout();
             this.ConditionPanel.ResumeLayout(false);
             this.ConditionPanel.PerformLayout();
+            this.DataAddTab.ResumeLayout(false);
+            this.DataAddTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -285,5 +310,7 @@
         private System.Windows.Forms.ComboBox Conditions;
         private System.Windows.Forms.ComboBox ConditionFields;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox ValuesTextBox;
+        private System.Windows.Forms.Label FormatLabel;
     }
 }
