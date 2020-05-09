@@ -34,17 +34,27 @@
             this.ConditionSwitch = new System.Windows.Forms.CheckBox();
             this.ConditionPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Conditions = new System.Windows.Forms.ComboBox();
-            this.ConditionFields = new System.Windows.Forms.ComboBox();
+            this.ViewConditions = new System.Windows.Forms.ComboBox();
+            this.ViewConditionFields = new System.Windows.Forms.ComboBox();
             this.CondLabel2 = new System.Windows.Forms.Label();
             this.CondLabel1 = new System.Windows.Forms.Label();
-            this.ValueCheckTextBox = new System.Windows.Forms.TextBox();
+            this.ViewTextBox = new System.Windows.Forms.TextBox();
             this.SelectLabel = new System.Windows.Forms.Label();
             this.ViewFields = new System.Windows.Forms.CheckedListBox();
             this.DataAddTab = new System.Windows.Forms.TabPage();
             this.ValuesTextBox = new System.Windows.Forms.TextBox();
             this.FormatLabel = new System.Windows.Forms.Label();
             this.DataChangeTab = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ModifyValueTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ModifyTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ModifyConditions = new System.Windows.Forms.ComboBox();
+            this.ModifyConditionFields = new System.Windows.Forms.ComboBox();
+            this.ModifyFields = new System.Windows.Forms.CheckedListBox();
             this.DataDeleteTab = new System.Windows.Forms.TabPage();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.TableListLabel = new System.Windows.Forms.Label();
@@ -52,6 +62,7 @@
             this.DataViewTab.SuspendLayout();
             this.ConditionPanel.SuspendLayout();
             this.DataAddTab.SuspendLayout();
+            this.DataChangeTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -107,11 +118,11 @@
             // 
             this.ConditionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConditionPanel.Controls.Add(this.label1);
-            this.ConditionPanel.Controls.Add(this.Conditions);
-            this.ConditionPanel.Controls.Add(this.ConditionFields);
+            this.ConditionPanel.Controls.Add(this.ViewConditions);
+            this.ConditionPanel.Controls.Add(this.ViewConditionFields);
             this.ConditionPanel.Controls.Add(this.CondLabel2);
             this.ConditionPanel.Controls.Add(this.CondLabel1);
-            this.ConditionPanel.Controls.Add(this.ValueCheckTextBox);
+            this.ConditionPanel.Controls.Add(this.ViewTextBox);
             this.ConditionPanel.Enabled = false;
             this.ConditionPanel.Location = new System.Drawing.Point(187, 57);
             this.ConditionPanel.Name = "ConditionPanel";
@@ -120,36 +131,36 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(190, 220);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(190, 196);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 19);
+            this.label1.Size = new System.Drawing.Size(242, 43);
             this.label1.TabIndex = 7;
             this.label1.Text = "Введите значение для проверки";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Conditions
+            // ViewConditions
             // 
-            this.Conditions.FormattingEnabled = true;
-            this.Conditions.Items.AddRange(new object[] {
+            this.ViewConditions.FormattingEnabled = true;
+            this.ViewConditions.Items.AddRange(new object[] {
             "= (равно)",
             "!= (не равно)",
             "> (больше)",
             ">= (больше или равно)",
             "< (меньше)",
             "<= (меньше или равно)"});
-            this.Conditions.Location = new System.Drawing.Point(234, 73);
-            this.Conditions.Name = "Conditions";
-            this.Conditions.Size = new System.Drawing.Size(180, 24);
-            this.Conditions.TabIndex = 6;
+            this.ViewConditions.Location = new System.Drawing.Point(234, 73);
+            this.ViewConditions.Name = "ViewConditions";
+            this.ViewConditions.Size = new System.Drawing.Size(180, 24);
+            this.ViewConditions.TabIndex = 6;
             // 
-            // ConditionFields
+            // ViewConditionFields
             // 
-            this.ConditionFields.FormattingEnabled = true;
-            this.ConditionFields.Location = new System.Drawing.Point(11, 73);
-            this.ConditionFields.Name = "ConditionFields";
-            this.ConditionFields.Size = new System.Drawing.Size(180, 24);
-            this.ConditionFields.TabIndex = 5;
+            this.ViewConditionFields.FormattingEnabled = true;
+            this.ViewConditionFields.Location = new System.Drawing.Point(11, 73);
+            this.ViewConditionFields.Name = "ViewConditionFields";
+            this.ViewConditionFields.Size = new System.Drawing.Size(180, 24);
+            this.ViewConditionFields.TabIndex = 5;
             // 
             // CondLabel2
             // 
@@ -171,12 +182,12 @@
             this.CondLabel1.Text = "Выберите поле для задания условия";
             this.CondLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ValueCheckTextBox
+            // ViewTextBox
             // 
-            this.ValueCheckTextBox.Location = new System.Drawing.Point(190, 242);
-            this.ValueCheckTextBox.Name = "ValueCheckTextBox";
-            this.ValueCheckTextBox.Size = new System.Drawing.Size(238, 22);
-            this.ValueCheckTextBox.TabIndex = 2;
+            this.ViewTextBox.Location = new System.Drawing.Point(190, 242);
+            this.ViewTextBox.Name = "ViewTextBox";
+            this.ViewTextBox.Size = new System.Drawing.Size(238, 22);
+            this.ViewTextBox.TabIndex = 2;
             // 
             // SelectLabel
             // 
@@ -229,6 +240,16 @@
             // 
             // DataChangeTab
             // 
+            this.DataChangeTab.Controls.Add(this.label6);
+            this.DataChangeTab.Controls.Add(this.ModifyValueTextBox);
+            this.DataChangeTab.Controls.Add(this.label5);
+            this.DataChangeTab.Controls.Add(this.ModifyTextBox);
+            this.DataChangeTab.Controls.Add(this.label4);
+            this.DataChangeTab.Controls.Add(this.label3);
+            this.DataChangeTab.Controls.Add(this.label2);
+            this.DataChangeTab.Controls.Add(this.ModifyConditions);
+            this.DataChangeTab.Controls.Add(this.ModifyConditionFields);
+            this.DataChangeTab.Controls.Add(this.ModifyFields);
             this.DataChangeTab.Location = new System.Drawing.Point(4, 25);
             this.DataChangeTab.Name = "DataChangeTab";
             this.DataChangeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -237,6 +258,102 @@
             this.DataChangeTab.Text = "Изменение данных";
             this.DataChangeTab.ToolTipText = "Здесь можно изменить сущности в таблицах";
             this.DataChangeTab.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(331, 229);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(330, 30);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Введите значение для замены";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ModifyValueTextBox
+            // 
+            this.ModifyValueTextBox.Location = new System.Drawing.Point(353, 262);
+            this.ModifyValueTextBox.Name = "ModifyValueTextBox";
+            this.ModifyValueTextBox.Size = new System.Drawing.Size(285, 22);
+            this.ModifyValueTextBox.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(331, 287);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(330, 30);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Введите значение для проверки";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ModifyTextBox
+            // 
+            this.ModifyTextBox.Location = new System.Drawing.Point(353, 320);
+            this.ModifyTextBox.Name = "ModifyTextBox";
+            this.ModifyTextBox.Size = new System.Drawing.Size(285, 22);
+            this.ModifyTextBox.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(414, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(190, 75);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Выберите условие для проверки";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label3.Location = new System.Drawing.Point(171, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 74);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Выберите поле для задания условия";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 67);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Выберите поля для изменения";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ModifyConditions
+            // 
+            this.ModifyConditions.FormattingEnabled = true;
+            this.ModifyConditions.Items.AddRange(new object[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.ModifyConditions.Location = new System.Drawing.Point(414, 113);
+            this.ModifyConditions.Name = "ModifyConditions";
+            this.ModifyConditions.Size = new System.Drawing.Size(190, 24);
+            this.ModifyConditions.TabIndex = 2;
+            // 
+            // ModifyConditionFields
+            // 
+            this.ModifyConditionFields.FormattingEnabled = true;
+            this.ModifyConditionFields.Location = new System.Drawing.Point(175, 113);
+            this.ModifyConditionFields.Name = "ModifyConditionFields";
+            this.ModifyConditionFields.Size = new System.Drawing.Size(176, 24);
+            this.ModifyConditionFields.TabIndex = 1;
+            // 
+            // ModifyFields
+            // 
+            this.ModifyFields.FormattingEnabled = true;
+            this.ModifyFields.Location = new System.Drawing.Point(6, 83);
+            this.ModifyFields.Name = "ModifyFields";
+            this.ModifyFields.Size = new System.Drawing.Size(159, 259);
+            this.ModifyFields.TabIndex = 0;
+            this.ModifyFields.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ModifyFields_ItemCheck);
             // 
             // DataDeleteTab
             // 
@@ -287,6 +404,8 @@
             this.ConditionPanel.PerformLayout();
             this.DataAddTab.ResumeLayout(false);
             this.DataAddTab.PerformLayout();
+            this.DataChangeTab.ResumeLayout(false);
+            this.DataChangeTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -306,11 +425,21 @@
         private System.Windows.Forms.CheckBox ConditionSwitch;
         private System.Windows.Forms.Label CondLabel2;
         private System.Windows.Forms.Label CondLabel1;
-        private System.Windows.Forms.TextBox ValueCheckTextBox;
-        private System.Windows.Forms.ComboBox Conditions;
-        private System.Windows.Forms.ComboBox ConditionFields;
+        private System.Windows.Forms.TextBox ViewTextBox;
+        private System.Windows.Forms.ComboBox ViewConditions;
+        private System.Windows.Forms.ComboBox ViewConditionFields;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ValuesTextBox;
         private System.Windows.Forms.Label FormatLabel;
+        private System.Windows.Forms.ComboBox ModifyConditions;
+        private System.Windows.Forms.ComboBox ModifyConditionFields;
+        private System.Windows.Forms.CheckedListBox ModifyFields;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox ModifyTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox ModifyValueTextBox;
     }
 }
