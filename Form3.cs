@@ -18,7 +18,7 @@ namespace KursProj
         DataShowForm DSF = null;
         private string command = null;
         private MySqlCommand cmd = null;
-        DataTable TablesTable = MySQLConnection.GetTables();
+        private DataTable TablesTable = MySQLConnection.GetTables();
 
         public QueryForm()
         {
@@ -44,6 +44,7 @@ namespace KursProj
             return cmd;
         }
 
+        //добавить кнопку под таблицами для описания
         private void SaveButton_Click(object sender, EventArgs e)
         {
             switch (QueryCreateWindow.SelectedIndex)
@@ -131,11 +132,6 @@ namespace KursProj
                     cmd.CommandText += ")";
                     break;
                 case 2://modify
-                    //состав команды: update 
-                    //table - брать выбранный элемент из списка таблиц
-                    //set
-                    //column_name = value - брать выбранный элемент из списка колонок и введенный текст
-                    //where column_name (==, !=, >, <, <=, >=) value - добавить условие
                     TypeOfCommand = 1;
                     try
                     {
@@ -189,7 +185,50 @@ namespace KursProj
                     }
                     break;
                 case 3://delete
-
+                    TypeOfCommand = 1;
+                    try
+                    {
+                        cmd.CommandText += "delete ";
+                        cmd.CommandText += "from ";
+                        cmd.CommandText += Tables.SelectedItem;
+                        cmd.CommandText += " where ";
+                        if (DeleteConditionFields.SelectedItem == null)
+                            throw new ArgumentException("Пожалуйста, выберите поле для условия");
+                        cmd.CommandText += DeleteConditionFields.SelectedItem;
+                        switch (DeleteConditions.SelectedItem)
+                        {
+                            case "= (равно)":
+                                cmd.CommandText += " = ";
+                                break;
+                            case "!= (не равно)":
+                                cmd.CommandText += " != ";
+                                break;
+                            case "> (больше)":
+                                cmd.CommandText += " > ";
+                                break;
+                            case ">= (больше или равно)":
+                                cmd.CommandText += " >= ";
+                                break;
+                            case "< (меньше)":
+                                cmd.CommandText += " < ";
+                                break;
+                            case "<= (меньше или равно)":
+                                cmd.CommandText += " <= ";
+                                break;
+                            default:
+                                throw new ArgumentException("Пожалуйста, выберите условие");
+                        }
+                        if (DeleteTextBox.Text == "")
+                            throw new ArgumentException("Пожалуйста, введите значение для условия");
+                        cmd.CommandText += "\"";
+                        cmd.CommandText += DeleteTextBox.Text;
+                        cmd.CommandText += "\"";
+                    }
+                    catch (ArgumentException AEX)
+                    {
+                        MessageBox.Show(AEX.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, false);
+                        DSF.CreateQueryButton_Click(null, null);
+                    }
                     break;
             }
             Hide();
@@ -208,6 +247,7 @@ namespace KursProj
             ViewConditionFields.Items.Clear();
             ModifyFields.Items.Clear();
             ModifyConditionFields.Items.Clear();
+            DeleteConditionFields.Items.Clear();
             FormatLabel.Text = "Введите добавляемые данные ниже в данном формате:\n";
             for (int i = 0; i < columns.Rows.Count; i++)
             {
@@ -215,6 +255,7 @@ namespace KursProj
                 ViewConditionFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
                 ModifyFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
                 ModifyConditionFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
+                DeleteConditionFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
                 if (columns.Rows[i].ItemArray[2].ToString() == "auto_increment")
                     continue;
                 FormatLabel.Text += columns.Rows[i].ItemArray[0].ToString();
@@ -254,6 +295,23 @@ namespace KursProj
                 foreach (int index in list.CheckedIndices)
                     if (index != e.Index)
                         list.SetItemChecked(index, false);
+        }
+
+        private void DescribeButton_Click(object sender, EventArgs e)
+        {
+            TypeOfCommand = 0;
+            command += "describe ";
+            try
+            {
+            if (Tables.SelectedItem is null)
+                throw new ArgumentNullException("Пожалуйста, выберите таблицу");
+            }
+            catch (ArgumentNullException ANEX)
+            {
+                MessageBox.Show(ANEX.ParamName, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, false);
+            }
+            command += Tables.SelectedItem;
+            Hide();
         }
     }
 }

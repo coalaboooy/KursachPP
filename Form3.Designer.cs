@@ -56,18 +56,29 @@
             this.ModifyConditionFields = new System.Windows.Forms.ComboBox();
             this.ModifyFields = new System.Windows.Forms.CheckedListBox();
             this.DataDeleteTab = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.DeleteConditions = new System.Windows.Forms.ComboBox();
+            this.DeleteConditionFields = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.TableListLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.DeleteTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DescribeLabel = new System.Windows.Forms.Label();
+            this.DescribeButton = new System.Windows.Forms.Button();
             this.QueryCreateWindow.SuspendLayout();
             this.DataViewTab.SuspendLayout();
             this.ConditionPanel.SuspendLayout();
             this.DataAddTab.SuspendLayout();
             this.DataChangeTab.SuspendLayout();
+            this.DataDeleteTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(252, 395);
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.SaveButton.Location = new System.Drawing.Point(16, 395);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(316, 43);
             this.SaveButton.TabIndex = 1;
@@ -357,6 +368,13 @@
             // 
             // DataDeleteTab
             // 
+            this.DataDeleteTab.Controls.Add(this.label10);
+            this.DataDeleteTab.Controls.Add(this.DeleteTextBox);
+            this.DataDeleteTab.Controls.Add(this.label9);
+            this.DataDeleteTab.Controls.Add(this.label8);
+            this.DataDeleteTab.Controls.Add(this.DeleteConditions);
+            this.DataDeleteTab.Controls.Add(this.DeleteConditionFields);
+            this.DataDeleteTab.Controls.Add(this.label7);
             this.DataDeleteTab.Location = new System.Drawing.Point(4, 25);
             this.DataDeleteTab.Name = "DataDeleteTab";
             this.DataDeleteTab.Padding = new System.Windows.Forms.Padding(3);
@@ -365,6 +383,49 @@
             this.DataDeleteTab.Text = "Удаление данных";
             this.DataDeleteTab.ToolTipText = "Здесь можно удалить сущности из таблиц";
             this.DataDeleteTab.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(3, 67);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(254, 58);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Выберите поле для задания условия";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DeleteConditions
+            // 
+            this.DeleteConditions.FormattingEnabled = true;
+            this.DeleteConditions.Items.AddRange(new object[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.DeleteConditions.Location = new System.Drawing.Point(313, 129);
+            this.DeleteConditions.Name = "DeleteConditions";
+            this.DeleteConditions.Size = new System.Drawing.Size(186, 24);
+            this.DeleteConditions.TabIndex = 2;
+            // 
+            // DeleteConditionFields
+            // 
+            this.DeleteConditionFields.FormattingEnabled = true;
+            this.DeleteConditionFields.Location = new System.Drawing.Point(35, 129);
+            this.DeleteConditionFields.Name = "DeleteConditionFields";
+            this.DeleteConditionFields.Size = new System.Drawing.Size(179, 24);
+            this.DeleteConditionFields.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label7.Location = new System.Drawing.Point(7, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(631, 43);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Данная команда удалит все записи из выбранной таблицы, которые подойдут под услов" +
+    "ие, выбранное вами";
             // 
             // Tables
             // 
@@ -385,11 +446,62 @@
             this.TableListLabel.Text = "Выберите таблицу для работы";
             this.TableListLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(309, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(205, 61);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Выберите условие для проверки";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DeleteTextBox
+            // 
+            this.DeleteTextBox.Location = new System.Drawing.Point(339, 320);
+            this.DeleteTextBox.Name = "DeleteTextBox";
+            this.DeleteTextBox.Size = new System.Drawing.Size(299, 22);
+            this.DeleteTextBox.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(318, 287);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(330, 30);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Введите значение для проверки";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DescribeLabel
+            // 
+            this.DescribeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.DescribeLabel.Location = new System.Drawing.Point(666, 166);
+            this.DescribeLabel.Name = "DescribeLabel";
+            this.DescribeLabel.Size = new System.Drawing.Size(134, 223);
+            this.DescribeLabel.TabIndex = 2;
+            this.DescribeLabel.Text = "Для просмотра структуры таблицы выберите таблицу и нажмите на кнопку \"Просмотреть" +
+    " структуру\"";
+            this.DescribeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DescribeButton
+            // 
+            this.DescribeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.DescribeButton.Location = new System.Drawing.Point(460, 395);
+            this.DescribeButton.Name = "DescribeButton";
+            this.DescribeButton.Size = new System.Drawing.Size(316, 43);
+            this.DescribeButton.TabIndex = 3;
+            this.DescribeButton.Text = "Просмотреть структуру";
+            this.DescribeButton.UseVisualStyleBackColor = true;
+            this.DescribeButton.Click += new System.EventHandler(this.DescribeButton_Click);
+            // 
             // QueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DescribeButton);
+            this.Controls.Add(this.DescribeLabel);
             this.Controls.Add(this.TableListLabel);
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.QueryCreateWindow);
@@ -406,6 +518,8 @@
             this.DataAddTab.PerformLayout();
             this.DataChangeTab.ResumeLayout(false);
             this.DataChangeTab.PerformLayout();
+            this.DataDeleteTab.ResumeLayout(false);
+            this.DataDeleteTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -441,5 +555,14 @@
         private System.Windows.Forms.TextBox ModifyTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ModifyValueTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox DeleteConditions;
+        private System.Windows.Forms.ComboBox DeleteConditionFields;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox DeleteTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label DescribeLabel;
+        private System.Windows.Forms.Button DescribeButton;
     }
 }

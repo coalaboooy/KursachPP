@@ -23,7 +23,6 @@ namespace KursProj
         public DataShowForm(EntryForm f)
         {
             InitializeComponent();
-            //DataTable.ReadOnly = false; Для редактирования?
             EF = f;
         }
 
@@ -56,8 +55,22 @@ namespace KursProj
                 if (ex is MySqlException)
                 {
                     MySqlException sqlEx = (MySqlException)ex;
-                    string msg = "Таблица " + sqlEx.Message.Split('\'')[1] + " не существует в данной базе данных";
+                    string msg = "Unknown error: " + sqlEx.Message;
+                    if (sqlEx.Message.Contains("Column count"))
+                        msg = "Данные были введены неправильно. Проверьте ввод, разделителем является ';'.";
+                    if (sqlEx.Message.Contains("FOREIGN KEY"))
+                    {
+                        string argTable = sqlEx.Message.Split('`')[3];
+                        string argField = sqlEx.Message.Split('`')[7];
+                        msg = "Невозможно удалить запись. На поле " + argField + " ссылается запись в таблице " + argTable + ", сначала удалите ее.";
+                    }
+                    //не используется, потому что все таблицы есть?
+                    //msg = "Таблица " + sqlEx.Message.Split('\'')[1] + " не существует в данной базе данных";
                     MessageBox.Show(msg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, false);
+                }
+                if (ex is NullReferenceException)
+                {
+                    MessageBox.Show("Сначала составьте запрос", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, false);
                 }
             }
         }
@@ -66,17 +79,6 @@ namespace KursProj
         {
             QF = new QueryForm(this);
             QF.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //получить типы колонок с помощью GetSchema
-            DataTable.DataSource = MySQLConnection.GetColumnsInTable("job");
-            //возможные типы:
-            //varchar, small/medium/bigtext - string
-            //int - int
-            //float - float
-            //date - почитать
         }
     }
 }
