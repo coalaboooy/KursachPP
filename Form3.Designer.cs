@@ -152,6 +152,15 @@
             // 
             // ViewConditions
             // 
+            this.ViewConditions.AutoCompleteCustomSource.AddRange(new string[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.ViewConditions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ViewConditions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ViewConditions.FormattingEnabled = true;
             this.ViewConditions.Items.AddRange(new object[] {
             "= (равно)",
@@ -167,6 +176,8 @@
             // 
             // ViewConditionFields
             // 
+            this.ViewConditionFields.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ViewConditionFields.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ViewConditionFields.FormattingEnabled = true;
             this.ViewConditionFields.Location = new System.Drawing.Point(11, 73);
             this.ViewConditionFields.Name = "ViewConditionFields";
@@ -336,6 +347,15 @@
             // 
             // ModifyConditions
             // 
+            this.ModifyConditions.AutoCompleteCustomSource.AddRange(new string[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.ModifyConditions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ModifyConditions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ModifyConditions.FormattingEnabled = true;
             this.ModifyConditions.Items.AddRange(new object[] {
             "= (равно)",
@@ -351,6 +371,8 @@
             // 
             // ModifyConditionFields
             // 
+            this.ModifyConditionFields.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ModifyConditionFields.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ModifyConditionFields.FormattingEnabled = true;
             this.ModifyConditionFields.Location = new System.Drawing.Point(175, 113);
             this.ModifyConditionFields.Name = "ModifyConditionFields";
@@ -396,6 +418,15 @@
             // 
             // DeleteConditions
             // 
+            this.DeleteConditions.AutoCompleteCustomSource.AddRange(new string[] {
+            "= (равно)",
+            "!= (не равно)",
+            "> (больше)",
+            ">= (больше или равно)",
+            "< (меньше)",
+            "<= (меньше или равно)"});
+            this.DeleteConditions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.DeleteConditions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.DeleteConditions.FormattingEnabled = true;
             this.DeleteConditions.Items.AddRange(new object[] {
             "= (равно)",
@@ -411,6 +442,8 @@
             // 
             // DeleteConditionFields
             // 
+            this.DeleteConditionFields.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.DeleteConditionFields.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.DeleteConditionFields.FormattingEnabled = true;
             this.DeleteConditionFields.Location = new System.Drawing.Point(35, 129);
             this.DeleteConditionFields.Name = "DeleteConditionFields";

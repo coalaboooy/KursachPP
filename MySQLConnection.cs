@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -35,29 +36,6 @@ namespace KursProj
             return conn;
         }
 
-        /*public static StringBuilder TextCommand () //Возможно, не стоит использовать. Вместо этого попробовать отображать информацию в таблице (нужна новая форма)
-        {
-            string command = "SELECT * FROM employee";
-            MySqlCommand sqlCommand = new MySqlCommand(command, conn);
-            MySqlDataReader rdr = sqlCommand.ExecuteReader();
-            StringBuilder sb = new StringBuilder();
-            int fieldNumber =  rdr.FieldCount;
-            while (rdr.Read())
-            {
-                for (int i = 0; i < fieldNumber; i++)
-                {
-                    if (i == fieldNumber)
-                        sb.Append(rdr[i]);
-                    else
-                        //sb.Append(rdr[i].ToString().PadRight(10, ' ') + "|"); Найти способ узнать максимальное кол-во символов в таблице
-                        sb.Append(rdr[i]);
-                }
-                sb.Append("\n");
-            }
-            rdr.Close();
-            return sb;
-        }*/
-
         public static DataSet GetDataSet (string command)
         {
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command, conn);
@@ -71,9 +49,12 @@ namespace KursProj
             string[] words = command.Split(' ');
             string tableName = null;
             for (int i = 0; i < words.Length; i++)
-            { //добавитьь больше случаев (delete, insert, и т.д.)
+            {
                 if (words[i].ToLower().Equals("from") | words[i].ToLower().Equals("describe"))
+                {
                     tableName = words[i + 1];
+                    break;
+                }
             }
             if (tableName == null)
                 throw new ArgumentNullException("Не найдено название таблицы в запросе");
@@ -112,6 +93,29 @@ namespace KursProj
                 }
             }
             return dt;
+        }
+
+        public static string GetPrivileges (string dbName)
+        {
+            string privileges = "";
+            string query = "show grants for current_user";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                if (rdr[0].ToString().Contains("`" + dbName + "`"))
+                    privileges += rdr[0];
+            }
+            rdr.Close();
+            if (privileges == "")
+                return "все действия.";
+            privileges = privileges.Replace("SELECT", "юотображение данных");
+            privileges = privileges.Replace("INSERT", "юдобавление данных");
+            privileges = privileges.Replace("UPDATE", "юизменение данных");
+            privileges = privileges.Substring(privileges.IndexOf('ю'), privileges.LastIndexOf('х')-privileges.IndexOf('ю')+1);
+            privileges = privileges.Replace('ю', '⁣');
+            privileges += '.';
+            return privileges;
         }
     }
 }

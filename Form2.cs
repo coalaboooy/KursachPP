@@ -24,6 +24,11 @@ namespace KursProj
         {
             InitializeComponent();
             EF = f;
+            PrivilegesLabel.Text = "Вы вошли как ";
+            PrivilegesLabel.Text += EF.GetRole();
+            PrivilegesLabel.Text += ". Вам доступны следующие действия: ";
+            //Не забыть сменить название таблицы на проде
+            PrivilegesLabel.Text += MySQLConnection.GetPrivileges("ikbo_10");
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -35,12 +40,12 @@ namespace KursProj
         {
             try
             {
-                if (QF.TypeOfCommand == 0 & QF.TypeOfCommand >= 0)
+                if (QF.TypeOfCommand == 0)
                 {
                     DataTable.DataSource = MySQLConnection.GetDataSet(QF.GetQueryCommand());
                     DataTable.DataMember = MySQLConnection.GetTableName(QF.GetQueryCommand());
                 }
-                else if (QF.TypeOfCommand >= 0)
+                else if (QF.TypeOfCommand == 1)
                 {
                     MessageBox.Show("Транзакция выполнена успешно, изменено " + QF.GetNonQueryCommand().ExecuteNonQuery().ToString() + " рядов");
                 }
@@ -59,14 +64,14 @@ namespace KursProj
                     if (sqlEx.Message.Contains("Column count"))
                         msg = "Данные были введены неправильно. Проверьте ввод, разделителем является ';'.";
                     if (sqlEx.Message.Contains("FOREIGN KEY"))
-                    {
-                        string argTable = sqlEx.Message.Split('`')[3];
-                        string argField = sqlEx.Message.Split('`')[7];
-                        msg = "Невозможно удалить запись. На поле " + argField + " ссылается запись в таблице " + argTable + ", сначала удалите ее.";
-                    }
-                    //не используется, потому что все таблицы есть?
-                    //msg = "Таблица " + sqlEx.Message.Split('\'')[1] + " не существует в данной базе данных";
-                    MessageBox.Show(msg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, false);
+                        msg = "Невозможно удалить запись. На поле " + sqlEx.Message.Split('`')[7]
+                            + " ссылается запись в таблице " + sqlEx.Message.Split('`')[3] + ", сначала удалите ее.";
+                    if (sqlEx.Message.Contains("command"))
+                        msg = "У вас недостаточно прав для выполенния запроса " + sqlEx.Message.Split(' ')[0]
+                            + ". Обратитесь за помощью к администратору базы данных.";
+                        //не используется, потому что все таблицы есть?
+                        //msg = "Таблица " + sqlEx.Message.Split('\'')[1] + " не существует в данной базе данных";
+                        MessageBox.Show(msg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, false);
                 }
                 if (ex is NullReferenceException)
                 {
@@ -79,6 +84,11 @@ namespace KursProj
         {
             QF = new QueryForm(this);
             QF.Show();
+        }
+
+        private void GenDocButton_Click(object sender, EventArgs e)
+        {
+            //Здесь новое окно с выбором какие из трех отчетов сгенерировать
         }
     }
 }

@@ -19,6 +19,7 @@ namespace KursProj
         private string command = null;
         private MySqlCommand cmd = null;
         private DataTable TablesTable = MySQLConnection.GetTables();
+        private AutoCompleteStringCollection collection = null;
 
         public QueryForm()
         {
@@ -32,6 +33,7 @@ namespace KursProj
             cmd = new MySqlCommand();
             cmd.Connection = MySQLConnection.GetConnection();
             cmd.CommandType = CommandType.Text;
+            collection = new AutoCompleteStringCollection();
         }
 
         public string GetQueryCommand()
@@ -44,7 +46,6 @@ namespace KursProj
             return cmd;
         }
 
-        //добавить кнопку под таблицами для описания
         private void SaveButton_Click(object sender, EventArgs e)
         {
             switch (QueryCreateWindow.SelectedIndex)
@@ -233,6 +234,24 @@ namespace KursProj
             }
             Hide();
         }
+        
+        private void DescribeButton_Click(object sender, EventArgs e)
+        {
+            TypeOfCommand = 0;
+            command += "describe ";
+            try
+            {
+                if (Tables.SelectedItem is null)
+                    throw new ArgumentNullException("Пожалуйста, выберите таблицу");
+            }
+            catch (ArgumentNullException ANEX)
+            {
+                MessageBox.Show(ANEX.ParamName, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, false);
+                DSF.CreateQueryButton_Click(null, null);
+            }
+            command += Tables.SelectedItem;
+            Hide();
+        }
 
         private void QueryForm_Load(object sender, EventArgs e)
         {
@@ -251,6 +270,7 @@ namespace KursProj
             FormatLabel.Text = "Введите добавляемые данные ниже в данном формате:\n";
             for (int i = 0; i < columns.Rows.Count; i++)
             {
+                collection.Add(columns.Rows[i].ItemArray[0].ToString());
                 ViewFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
                 ViewConditionFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
                 ModifyFields.Items.Add(columns.Rows[i].ItemArray[0].ToString());
@@ -263,6 +283,9 @@ namespace KursProj
                 FormatLabel.Text += columns.Rows[i].ItemArray[1].ToString();
                 FormatLabel.Text += "; ";
             }
+            ViewConditionFields.AutoCompleteCustomSource = collection;
+            ModifyConditionFields.AutoCompleteCustomSource = collection;
+            DeleteConditionFields.AutoCompleteCustomSource = collection;
             FormatLabel.Text = FormatLabel.Text.Replace("varchar;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("tinytext;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("mediumtext;", "строка;");
@@ -295,23 +318,6 @@ namespace KursProj
                 foreach (int index in list.CheckedIndices)
                     if (index != e.Index)
                         list.SetItemChecked(index, false);
-        }
-
-        private void DescribeButton_Click(object sender, EventArgs e)
-        {
-            TypeOfCommand = 0;
-            command += "describe ";
-            try
-            {
-            if (Tables.SelectedItem is null)
-                throw new ArgumentNullException("Пожалуйста, выберите таблицу");
-            }
-            catch (ArgumentNullException ANEX)
-            {
-                MessageBox.Show(ANEX.ParamName, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign, false);
-            }
-            command += Tables.SelectedItem;
-            Hide();
         }
     }
 }

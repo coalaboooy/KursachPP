@@ -32,6 +32,8 @@
             this.CreateQueryButton = new System.Windows.Forms.Button();
             this.DataTable = new System.Windows.Forms.DataGridView();
             this.ResultLabel = new System.Windows.Forms.Label();
+            this.GenDocButton = new System.Windows.Forms.Button();
+            this.PrivilegesLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             this.DataTable.ReadOnly = true;
             this.DataTable.RowHeadersWidth = 51;
             this.DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DataTable.Size = new System.Drawing.Size(836, 417);
+            this.DataTable.Size = new System.Drawing.Size(836, 366);
             this.DataTable.TabIndex = 0;
             // 
             // ResultLabel
@@ -86,11 +88,34 @@
             this.ResultLabel.TabIndex = 3;
             this.ResultLabel.Text = "Результат выполнения запроса";
             // 
+            // GenDocButton
+            // 
+            this.GenDocButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GenDocButton.Location = new System.Drawing.Point(302, 469);
+            this.GenDocButton.Name = "GenDocButton";
+            this.GenDocButton.Size = new System.Drawing.Size(300, 28);
+            this.GenDocButton.TabIndex = 4;
+            this.GenDocButton.Text = "Сгенерировать отчетность";
+            this.GenDocButton.UseVisualStyleBackColor = true;
+            this.GenDocButton.Click += new System.EventHandler(this.GenDocButton_Click);
+            // 
+            // PrivilegesLabel
+            // 
+            this.PrivilegesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PrivilegesLabel.Location = new System.Drawing.Point(16, 414);
+            this.PrivilegesLabel.Name = "PrivilegesLabel";
+            this.PrivilegesLabel.Size = new System.Drawing.Size(839, 51);
+            this.PrivilegesLabel.TabIndex = 5;
+            this.PrivilegesLabel.Text = "Информация о пользователе";
+            this.PrivilegesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DataShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 505);
+            this.Controls.Add(this.PrivilegesLabel);
+            this.Controls.Add(this.GenDocButton);
             this.Controls.Add(this.ResultLabel);
             this.Controls.Add(this.DataTable);
             this.Controls.Add(this.CreateQueryButton);
@@ -111,5 +136,7 @@
         private System.Windows.Forms.Button CreateQueryButton;
         private System.Windows.Forms.DataGridView DataTable;
         private System.Windows.Forms.Label ResultLabel;
+        private System.Windows.Forms.Button GenDocButton;
+        private System.Windows.Forms.Label PrivilegesLabel;
     }
 }

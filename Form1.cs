@@ -24,6 +24,24 @@ namespace KursProj
             Application.Exit();
         }
 
+        public string GetRole ()
+        {
+            string role = "unknown role";
+            switch (LoginTextBox.Text)
+            {
+                case "root":
+                    role = "администратор";
+                    break;
+                case "user":
+                    role = "пользователь";
+                    break;
+                case "guest":
+                    role = "гость";
+                    break;
+            }
+            return role;
+        }
+
         private void SignInButton_Click(object sender, EventArgs e)
         {
             try
