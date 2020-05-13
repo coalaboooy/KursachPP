@@ -47,7 +47,7 @@ namespace KursProj
             try
             {
                 MySQLConnection.Connect(LoginTextBox.Text, PasswordTextBox.Text, DBNameTextBox.Text);
-                DataShowForm DSF = new DataShowForm(this);
+                DataShowForm DSF = new DataShowForm(this, DBNameTextBox.Text);
                 DSF.Show();
                 Hide();
             }

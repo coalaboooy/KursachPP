@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,6 +117,56 @@ namespace KursProj
             privileges = privileges.Replace('ю', '⁣');
             privileges += '.';
             return privileges;
+        }
+
+        public static string GetExpDate ()
+        {
+            string results = "";
+            string query = "select prop_name from property where cond = \"spoiled\"";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                results += rdr[0];
+                results += ", ";
+            }
+            rdr.Close();
+            results = results.Remove(results.Length - 2);
+            return results;
+        }
+
+        public static string GetMisItems ()
+        {
+            string results = "";
+            string query = "select prop_name from property where cond = \"missing\"";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                results += rdr[0];
+                results += ", ";
+            }
+            rdr.Close();
+            results = results.Remove(results.Length - 2);
+            return results;
+        }
+
+        public static string GetAllItems ()
+        {
+            string results = "";
+            string query = "select tp.type_name, count(*) from property pt join types tp on tp.type_id = pt.type_id group by type_name";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                results += rdr[0];
+                results += " - ";
+                results += rdr[1];
+                results += ", ";
+            }
+            rdr.Close();
+            results = results.Remove(results.Length - 2);
+            return results;
         }
     }
 }

@@ -267,7 +267,7 @@ namespace KursProj
             ModifyFields.Items.Clear();
             ModifyConditionFields.Items.Clear();
             DeleteConditionFields.Items.Clear();
-            FormatLabel.Text = "Введите добавляемые данные ниже в данном формате:\n";
+            FormatLabel.Text = "Введите добавляемые данные ниже в данном формате (обратите внимание, разделителем между полями является ';'):\n";
             for (int i = 0; i < columns.Rows.Count; i++)
             {
                 collection.Add(columns.Rows[i].ItemArray[0].ToString());

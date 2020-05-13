@@ -15,20 +15,20 @@ namespace KursProj
     {
         EntryForm EF = null; 
         QueryForm QF = null;
+        DocumentationForm DF = null;
         public DataShowForm()
         {
             InitializeComponent();
         }
 
-        public DataShowForm(EntryForm f)
+        public DataShowForm(EntryForm f, string DBName)
         {
             InitializeComponent();
             EF = f;
             PrivilegesLabel.Text = "Вы вошли как ";
             PrivilegesLabel.Text += EF.GetRole();
             PrivilegesLabel.Text += ". Вам доступны следующие действия: ";
-            //Не забыть сменить название таблицы на проде
-            PrivilegesLabel.Text += MySQLConnection.GetPrivileges("ikbo_10");
+            PrivilegesLabel.Text += MySQLConnection.GetPrivileges(DBName);
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -88,7 +88,8 @@ namespace KursProj
 
         private void GenDocButton_Click(object sender, EventArgs e)
         {
-            //Здесь новое окно с выбором какие из трех отчетов сгенерировать
+            DF = new DocumentationForm(this);
+            DF.Show();
         }
     }
 }

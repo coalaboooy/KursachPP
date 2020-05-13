@@ -17,3 +17,4 @@ C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursPr
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.EntryForm.resources
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.DataShowForm.resources
 C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.QueryForm.resources
+C:\Users\Александр\Desktop\Учеба\ПП\курсАч\KursProj\KursProj\obj\Debug\KursProj.DocumentationForm.resources

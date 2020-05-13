@@ -113,20 +113,20 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.AutoSize = true;
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WelcomeLabel.Location = new System.Drawing.Point(329, 11);
+            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.WelcomeLabel.Location = new System.Drawing.Point(13, 19);
             this.WelcomeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(150, 29);
+            this.WelcomeLabel.Size = new System.Drawing.Size(705, 24);
             this.WelcomeLabel.TabIndex = 7;
-            this.WelcomeLabel.Text = "//WELCOME";
+            this.WelcomeLabel.Text = "Добро пожаловать в систему управления базой данных инвентарного учета";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SignInButton
             // 
             this.SignInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SignInButton.Location = new System.Drawing.Point(335, 281);
-            this.SignInButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SignInButton.Margin = new System.Windows.Forms.Padding(4);
             this.SignInButton.Name = "SignInButton";
             this.SignInButton.Size = new System.Drawing.Size(152, 36);
             this.SignInButton.TabIndex = 8;

@@ -56,15 +56,15 @@
             this.ModifyConditionFields = new System.Windows.Forms.ComboBox();
             this.ModifyFields = new System.Windows.Forms.CheckedListBox();
             this.DataDeleteTab = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DeleteTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.DeleteConditions = new System.Windows.Forms.ComboBox();
             this.DeleteConditionFields = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.Tables = new System.Windows.Forms.ComboBox();
             this.TableListLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.DeleteTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.DescribeLabel = new System.Windows.Forms.Label();
             this.DescribeButton = new System.Windows.Forms.Button();
             this.QueryCreateWindow.SuspendLayout();
@@ -258,7 +258,8 @@
             this.FormatLabel.Name = "FormatLabel";
             this.FormatLabel.Size = new System.Drawing.Size(631, 129);
             this.FormatLabel.TabIndex = 0;
-            this.FormatLabel.Text = "Введите добавляемые данные ниже в данном формате:\r\n";
+            this.FormatLabel.Text = "Введите добавляемые данные ниже в данном формате (обратите внимание, разделителем" +
+    " между полями является \';\'):\r\n";
             // 
             // DataChangeTab
             // 
@@ -406,6 +407,33 @@
             this.DataDeleteTab.ToolTipText = "Здесь можно удалить сущности из таблиц";
             this.DataDeleteTab.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(318, 287);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(330, 30);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Введите значение для проверки";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DeleteTextBox
+            // 
+            this.DeleteTextBox.Location = new System.Drawing.Point(339, 320);
+            this.DeleteTextBox.Name = "DeleteTextBox";
+            this.DeleteTextBox.Size = new System.Drawing.Size(299, 22);
+            this.DeleteTextBox.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(309, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(205, 61);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Выберите условие для проверки";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -478,33 +506,6 @@
             this.TableListLabel.TabIndex = 0;
             this.TableListLabel.Text = "Выберите таблицу для работы";
             this.TableListLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(309, 67);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(205, 61);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Выберите условие для проверки";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DeleteTextBox
-            // 
-            this.DeleteTextBox.Location = new System.Drawing.Point(339, 320);
-            this.DeleteTextBox.Name = "DeleteTextBox";
-            this.DeleteTextBox.Size = new System.Drawing.Size(299, 22);
-            this.DeleteTextBox.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(318, 287);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(330, 30);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Введите значение для проверки";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DescribeLabel
             // 
