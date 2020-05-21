@@ -134,7 +134,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DocLabel);
             this.Name = "DocumentationForm";
-            this.Text = "Form4";
+            this.Text = "Генерация отчетов";
             this.ResumeLayout(false);
 
         }

@@ -122,7 +122,7 @@
             this.Controls.Add(this.ExecuteQueryButton);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DataShowForm";
-            this.Text = "DataShowForm";
+            this.Text = "Отображение данных";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             this.ResumeLayout(false);

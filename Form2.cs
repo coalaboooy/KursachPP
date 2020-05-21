@@ -40,18 +40,22 @@ namespace KursProj
         {
             try
             {
+                //выполнение команды
                 if (QF.TypeOfCommand == 0)
                 {
+                    //загрузка результатов в таблицу для отображения
                     DataTable.DataSource = MySQLConnection.GetDataSet(QF.GetQueryCommand());
                     DataTable.DataMember = MySQLConnection.GetTableName(QF.GetQueryCommand());
                 }
                 else if (QF.TypeOfCommand == 1)
                 {
+                    //выполнение транзакции и вывод результатов
                     MessageBox.Show("Транзакция выполнена успешно, изменено " + QF.GetNonQueryCommand().ExecuteNonQuery().ToString() + " рядов");
                 }
             }
             catch (Exception ex)
             {
+                //обработка исключений разного типа
                 if (ex is ArgumentNullException)
                 {
                     ArgumentNullException ArgNullEx = (ArgumentNullException)ex;
@@ -67,10 +71,8 @@ namespace KursProj
                         msg = "Невозможно удалить запись. На поле " + sqlEx.Message.Split('`')[7]
                             + " ссылается запись в таблице " + sqlEx.Message.Split('`')[3] + ", сначала удалите ее.";
                     if (sqlEx.Message.Contains("command"))
-                        msg = "У вас недостаточно прав для выполенния запроса " + sqlEx.Message.Split(' ')[0]
+                        msg = "У вас недостаточно прав для выполнения запроса " + sqlEx.Message.Split(' ')[0]
                             + ". Обратитесь за помощью к администратору базы данных.";
-                        //не используется, потому что все таблицы есть?
-                        //msg = "Таблица " + sqlEx.Message.Split('\'')[1] + " не существует в данной базе данных";
                         MessageBox.Show(msg, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly, false);
                 }
                 if (ex is NullReferenceException)

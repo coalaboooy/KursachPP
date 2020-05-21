@@ -37,6 +37,7 @@ namespace KursProj
             {
                 try
                 {
+                    //запись полученых результатов в файл
                     string[] items = MySQLConnection.GetExpDate().Split(',');
                     StreamWriter sw = new StreamWriter(path, true);
                     sw.WriteLine("У предметов, перечисленные ниже, истек срок эксплуатации:");
@@ -44,6 +45,7 @@ namespace KursProj
                     sw.Flush();
                     sw.Close();
                     MessageBox.Show("Файл с отчетом успешно записан", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //открытие полученного файла
                     Process.Start("C:\\Windows\\System32\\notepad.exe", path);
                 }
                 catch (Exception ex)
@@ -67,6 +69,7 @@ namespace KursProj
             {
                 try
                 {
+                    //запись полученых результатов в файл
                     string[] items = MySQLConnection.GetMisItems().Split(',');
                     StreamWriter sw = new StreamWriter(path, true);
                     sw.WriteLine("Предметы, перечисленные ниже, были утеряны:");
@@ -74,6 +77,7 @@ namespace KursProj
                     sw.Flush();
                     sw.Close();
                     MessageBox.Show("Файл с отчетом успешно записан", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //открытие полученного файла
                     Process.Start("C:\\Windows\\System32\\notepad.exe", path);
                 }
                 catch (Exception ex)
@@ -97,12 +101,14 @@ namespace KursProj
             {
                 try
                 {
+                    //запись полученых результатов в файл
                     StreamWriter sw = new StreamWriter(path, true);
                     sw.WriteLine("Количество предметов по типам:");
                     sw.Write(MySQLConnection.GetAllItems());
                     sw.Flush();
                     sw.Close();
                     MessageBox.Show("Файл с отчетом успешно записан", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //открытие полученного файла
                     Process.Start("C:\\Windows\\System32\\notepad.exe", path);
                 }
                 catch (Exception ex)

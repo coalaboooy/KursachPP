@@ -50,7 +50,8 @@ namespace KursProj
         {
             switch (QueryCreateWindow.SelectedIndex)
             {
-                case 0://view
+                case 0:
+                    //формирование команды просмотра записей
                     TypeOfCommand = 0;
                     command += "select ";
                     foreach (string column in ViewFields.CheckedItems)
@@ -105,7 +106,8 @@ namespace KursProj
                         }
                     }
                     break;
-                case 1://add
+                case 1:
+                    //формирование команды добавления записей
                     TypeOfCommand = 1;
                     DataTable columns = MySQLConnection.GetColumnsInTable(Tables.SelectedItem.ToString());
                     cmd.CommandText += "insert into ";
@@ -116,9 +118,9 @@ namespace KursProj
                         if (columns.Rows[i].ItemArray[2].ToString() == "auto_increment")
                             continue;
                         cmd.CommandText += columns.Rows[i].ItemArray[0].ToString();
-                        if (i != columns.Rows.Count - 1)
-                            cmd.CommandText += ", ";
+                        cmd.CommandText += ", ";
                     }
+                    cmd.CommandText = cmd.CommandText.Remove(cmd.CommandText.Length - 2);
                     cmd.CommandText += ") values (";
                     string[] values = ValuesTextBox.Text.Split(';');
                     string n_value = null;
@@ -132,7 +134,8 @@ namespace KursProj
                     cmd.CommandText = cmd.CommandText.Remove(cmd.CommandText.Length - 2);
                     cmd.CommandText += ")";
                     break;
-                case 2://modify
+                case 2:
+                    //формирование команды изменения записей
                     TypeOfCommand = 1;
                     try
                     {
@@ -185,7 +188,8 @@ namespace KursProj
                         DSF.CreateQueryButton_Click(null, null);
                     }
                     break;
-                case 3://delete
+                case 3:
+                    //формирование команды удаления записей
                     TypeOfCommand = 1;
                     try
                     {
@@ -237,6 +241,7 @@ namespace KursProj
         
         private void DescribeButton_Click(object sender, EventArgs e)
         {
+            //формирование команды описания структуры таблицы
             TypeOfCommand = 0;
             command += "describe ";
             try
@@ -255,6 +260,7 @@ namespace KursProj
 
         private void QueryForm_Load(object sender, EventArgs e)
         {
+            //загружает список доступных таблиц
             for (int i = 0; i < TablesTable.Rows.Count; i++)
                 Tables.Items.Add(TablesTable.Rows[i].ItemArray[0].ToString());
         }
@@ -262,12 +268,14 @@ namespace KursProj
         private void Tables_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable columns = MySQLConnection.GetColumnsInTable(Tables.SelectedItem.ToString());
+            //загружает предметы в списки и обновляет текст в зависимости от выбранной таблицы
             ViewFields.Items.Clear();
             ViewConditionFields.Items.Clear();
             ModifyFields.Items.Clear();
             ModifyConditionFields.Items.Clear();
             DeleteConditionFields.Items.Clear();
             FormatLabel.Text = "Введите добавляемые данные ниже в данном формате (обратите внимание, разделителем между полями является ';'):\n";
+
             for (int i = 0; i < columns.Rows.Count; i++)
             {
                 collection.Add(columns.Rows[i].ItemArray[0].ToString());
@@ -283,14 +291,16 @@ namespace KursProj
                 FormatLabel.Text += columns.Rows[i].ItemArray[1].ToString();
                 FormatLabel.Text += "; ";
             }
+            //добавляет элементы в автодополнение
             ViewConditionFields.AutoCompleteCustomSource = collection;
             ModifyConditionFields.AutoCompleteCustomSource = collection;
             DeleteConditionFields.AutoCompleteCustomSource = collection;
+
             FormatLabel.Text = FormatLabel.Text.Replace("varchar;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("tinytext;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("mediumtext;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("largetext;", "строка;");
-            FormatLabel.Text = FormatLabel.Text.Replace("text;", "строк;");
+            FormatLabel.Text = FormatLabel.Text.Replace("text;", "строка;");
             FormatLabel.Text = FormatLabel.Text.Replace("tinyint;", "целое число;");
             FormatLabel.Text = FormatLabel.Text.Replace("smallint;", "целое число;");
             FormatLabel.Text = FormatLabel.Text.Replace("mediumint;", "целое число;");
@@ -304,6 +314,7 @@ namespace KursProj
 
         private void ConditionSwitch_CheckedChanged(object sender, EventArgs e)
         {
+            //включает или выключает панель с выбором условия
             if (ConditionPanel.Enabled == false)
                 ConditionPanel.Enabled = true;
             else
@@ -312,7 +323,7 @@ namespace KursProj
 
         private void ModifyFields_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            //позволяет выбрать только один из элементов
+            //позволяет выбрать только один из элементов в списке полей
             var list = sender as CheckedListBox;
             if (e.NewValue == CheckState.Checked)
                 foreach (int index in list.CheckedIndices)

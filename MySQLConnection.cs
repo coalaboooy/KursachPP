@@ -39,6 +39,7 @@ namespace KursProj
 
         public static DataSet GetDataSet (string command)
         {
+            //возвращает данные в виде набора информации для таблицы
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command, conn);
             DataSet ds = new DataSet();
             dataAdapter.Fill(ds, GetTableName(command));
@@ -47,6 +48,7 @@ namespace KursProj
 
         public static string GetTableName (string command)
         {
+            //возвращает название таблицы в запросе
             string[] words = command.Split(' ');
             string tableName = null;
             for (int i = 0; i < words.Length; i++)
@@ -64,6 +66,7 @@ namespace KursProj
 
         public static DataTable GetTables ()
         {
+            //возвращает все таблицы в данной базе данных
             DataTable dt = conn.GetSchema("Tables").Copy();
             for (int i = 0; i < dt.Columns.Count; i++)
             {
@@ -77,7 +80,8 @@ namespace KursProj
         }
         public static DataTable GetColumnsInTable (string tableName)
         {
-            //для колонок:
+            //возвращает список колонок в таблице
+            //фильтры для колонок в массиве rv:
             //0, 1 - неважно
             //2 - имя таблицы
             //3 - имя колонки
@@ -98,6 +102,7 @@ namespace KursProj
 
         public static string GetPrivileges (string dbName)
         {
+            //возвращает список доступных действий
             string privileges = "";
             string query = "show grants for current_user";
             MySqlCommand cmd = new MySqlCommand(query, conn);

@@ -541,7 +541,7 @@
             this.Controls.Add(this.QueryCreateWindow);
             this.Controls.Add(this.SaveButton);
             this.Name = "QueryForm";
-            this.Text = "QueryForm";
+            this.Text = "Создание запроса";
             this.Load += new System.EventHandler(this.QueryForm_Load);
             this.QueryCreateWindow.ResumeLayout(false);
             this.DataViewTab.ResumeLayout(false);

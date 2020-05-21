@@ -26,6 +26,7 @@ namespace KursProj
 
         public string GetRole ()
         {
+            //возвращает роль пользователя, нужно для получения полномочий
             string role = "unknown role";
             switch (LoginTextBox.Text)
             {
