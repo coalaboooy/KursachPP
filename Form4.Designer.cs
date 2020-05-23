@@ -45,7 +45,7 @@
             this.DocLabel.Name = "DocLabel";
             this.DocLabel.Size = new System.Drawing.Size(775, 60);
             this.DocLabel.TabIndex = 0;
-            this.DocLabel.Text = "Здессь можно сгенерировать следующие отчеты:";
+            this.DocLabel.Text = "Здесь можно сгенерировать следующие отчеты:";
             this.DocLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1

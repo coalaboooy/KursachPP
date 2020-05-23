@@ -67,9 +67,12 @@ namespace KursProj
                     string msg = "Unknown error: " + sqlEx.Message;
                     if (sqlEx.Message.Contains("Column count"))
                         msg = "Данные были введены неправильно. Проверьте ввод, разделителем является ';'.";
-                    if (sqlEx.Message.Contains("FOREIGN KEY"))
+                    if (sqlEx.Message.Contains("FOREIGN KEY") & sqlEx.Message.Contains("delete"))
                         msg = "Невозможно удалить запись. На поле " + sqlEx.Message.Split('`')[7]
                             + " ссылается запись в таблице " + sqlEx.Message.Split('`')[3] + ", сначала удалите ее.";
+                    if (sqlEx.Message.Contains("FOREIGN KEY") & sqlEx.Message.Contains("add"))
+                        msg = "Невозможно добавить запись. Поле " + sqlEx.Message.Split('`')[11]
+                            + " с введенным значением не существует в таблице " + sqlEx.Message.Split('`')[9] + ", сначала добавьте его.";
                     if (sqlEx.Message.Contains("command"))
                         msg = "У вас недостаточно прав для выполнения запроса " + sqlEx.Message.Split(' ')[0]
                             + ". Обратитесь за помощью к администратору базы данных.";
